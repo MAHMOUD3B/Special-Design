@@ -1,0 +1,137 @@
+@use"../helpers/mixins" as *;
+
+/* Setting box */
+.setting-box {
+    position: fixed;
+    top: 0;
+    left: -200px;
+    width: 200px;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 100;
+    transition: 0.5s ease-out;
+
+    .gear {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        right: -30px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        @include center;
+        cursor: pointer;
+
+        .icon {
+            font-size: 22px;
+            color: var(--color-one);
+        }
+    }
+
+    .setting-container {
+        padding: 10px;
+        height: 100%;
+
+        .colors {
+            padding: 10px;
+            background-color: #ccc;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+
+            &:hover {
+                box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+                transform: scale(1.03);
+            }
+
+            h3 {
+                margin-bottom: 10px;
+                color: var(--color-one);
+                font-size: 22px;
+            }
+
+            ul {
+                padding: 5px;
+                text-align: center;
+
+                li {
+                    border: 2px solid #bbb;
+
+                    &.active {
+                        border: 2px solid white;
+                        opacity: 1;
+                    }
+
+                    @include circle(25px, transparent);
+                    display: inline-block;
+                    margin-right: 5px;
+                    cursor: pointer;
+                    opacity: 0.5;
+
+                    &:nth-child(1) {
+                        background-color: #222831;
+                    }
+
+                    &:nth-child(2) {
+                        background-color: #393E46;
+                    }
+
+                    &:nth-child(3) {
+                        background-color: #00ADB5;
+                    }
+
+                    &:nth-child(4) {
+                        background-color: #EEEEEE;
+                    }
+                }
+            }
+        }
+
+        .backgrounds {
+            padding: 10px;
+            background-color: #ccc;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+
+            &:hover {
+                box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+                transform: scale(1.03);
+            }
+
+            h3 {
+                margin-bottom: 10px;
+                color: var(--color-one);
+                font-size: 18px;
+            }
+
+            .buttons {
+                span {
+                    display: inline-block;
+                    margin-top: 10px;
+                    padding: 5px 10px;
+                    background-color: gray;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    &:nth-child(1) {
+                        margin-right: 15px;
+                    }
+
+                    &.active {
+                        background-color: rgb(48, 193, 255);
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.open {
+    left: 0;
+}

@@ -1,0 +1,40 @@
+@use"../helpers/mixins" as *;
+
+/* Start global rules of styling */
+:root {
+    --color-one: #222831;
+    --color-two: #393E46;
+    --color-three: #00ADB5;
+    --color-four: #EEEEEE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: var(--color-one);
+}
+
+input {
+    caret-color: var(--color-one);
+}

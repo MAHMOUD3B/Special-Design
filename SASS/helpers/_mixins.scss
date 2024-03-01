@@ -1,0 +1,48 @@
+@mixin center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin responsive($screen) {
+    @if $screen ==mobile {
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+
+    @else if $screen ==small {
+        @media (min-width: 768px) and (max-width: 991px) {
+            @content;
+        }
+    }
+
+    @else if $screen ==medium {
+        @media (min-width: 992px) and (max-width: 1199px) {
+            @content;
+        }
+    }
+
+    @else if $screen ==large {
+        @media (min-width: 1200px) {
+            @content;
+        }
+    }
+}
+
+@mixin overlay($color, $alpha, $zindex) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color, $alpha);
+    z-index: $zindex;
+}
+
+@mixin circle($dimentions, $color) {
+    width: $dimentions;
+    height: $dimentions;
+    border-radius: 50%;
+    background-color: $color;
+}

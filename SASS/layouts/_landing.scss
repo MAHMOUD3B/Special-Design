@@ -1,0 +1,53 @@
+@use"../helpers/mixins" as *;
+
+/* Start styling landing section */
+.landing {
+    position: relative;
+    height: 100vh;
+    background-image: url('./images/five.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    @include center;
+
+    .overlay {
+        @include overlay(black, 0.5, 1)
+    }
+
+    .land-text {
+        @include responsive(small) {
+            width: 400px;
+        }
+
+        @include responsive(medium) {
+            width: 400px;
+        }
+
+        @include responsive(large) {
+            width: 400px;
+        }
+
+        padding: 0 20px;
+        text-align: center;
+        z-index: 2;
+
+        h1 {
+            font-size: 40px;
+            color: var(--color-four);
+
+            span {
+                color: var(--color-one);
+
+                &:hover {
+                    color: var(--color-three);
+                }
+            }
+        }
+
+        p {
+            color: var(--color-four);
+            line-height: 1.8;
+            font-size: 20px;
+        }
+    }
+}

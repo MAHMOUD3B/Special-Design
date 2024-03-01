@@ -1,6 +1,7 @@
 // change landing background image
-let work;
-let done;
+let option = true;
+let stops;
+let storage = localStorage.getItem("btnStatus");
 let landing = document.querySelector(".landing");
 let backgrounds = [
   "../images/one.jfif",
@@ -10,10 +11,15 @@ let backgrounds = [
   "../images/five.jpg",
   "../images/six.jfif",
 ];
-let stops = setInterval(() => {
-  let random = Math.floor(Math.random() * backgrounds.length);
-  landing.style.backgroundImage = `url("${backgrounds[random]}")`;
-}, 5000);
+function randImgs() {
+  if (option === true) {
+    stops = setInterval(() => {
+      let random = Math.floor(Math.random() * backgrounds.length);
+      landing.style.backgroundImage = `url("${backgrounds[random]}")`;
+    }, 5000);
+  }
+}
+
 // open and close setting box
 let gear = document.querySelector(".gear");
 let settings = document.querySelector(".setting-box");
@@ -56,23 +62,39 @@ document.documentElement.style.cssText = `--color-one: ${localStorage.getItem(
 
 // choose random background behavior
 document.querySelectorAll(".backgrounds .buttons span").forEach((btns) => {
+  if (storage !== null) {
+    if (storage === "true") {
+      option = true;
+      randImgs();
+      if (btns.dataset.background === "yes") {
+        btns.className = "active";
+      }
+    } else {
+      option = false;
+      if (btns.dataset.background === "no") {
+        btns.className = "active";
+      }
+    }
+  }
   btns.addEventListener("click", (btn) => {
     btn.target.parentElement.querySelectorAll(".active").forEach((span) => {
       span.classList.remove("active");
     });
     btn.target.classList.add("active");
-
-    if (
-      btn.target.dataset.background === "yes" &&
-      btn.target.classList.contains("active")
-    ) {
-      console.log("Work" + stops);
+    if (btn.target.dataset.background === "yes") {
+      option = true;
+      randImgs();
+      localStorage.setItem("btnStatus", true);
+    } else {
+      option = false;
+      randImgs();
       clearInterval(stops);
-    } else if (
-      btn.target.dataset.background === "no" &&
-      btn.target.classList.contains("active")
-    ) {
-      console.log("Not work");
+      localStorage.setItem("background", landing.style.backgroundImage);
+      localStorage.setItem("btnStatus", false);
     }
   });
 });
+landing.style.backgroundImage = localStorage.getItem("background");
+console.log(option);
+
+//

@@ -1,6 +1,8 @@
 @use"./SASS/helpers/mixins" as *;
 @use"./SASS/components/global";
+@use"./SASS/components/settings";
 @use"./SASS/layouts/header";
 @use"./SASS/layouts/landing";
-@use"./SASS/components/settings";
+@use"./SASS/layouts/about";
+@use"./SASS/layouts/skills";
 @use"./SASS/layouts/footer";

@@ -1,0 +1,39 @@
+@use"../helpers/mixins" as *;
+
+/* Styling about section */
+.about {
+    @include secPadding;
+
+    .content {
+        display: flex;
+        align-items: center;
+
+        .info {
+            flex: 1;
+
+            h3 {
+                color: var(--color-one);
+                margin-bottom: 10px;
+
+                font: {
+                    size: 30px;
+                    weight: bold;
+                }
+            }
+
+            p {
+                @include paragraph;
+                font-size: 20px;
+            }
+        }
+
+        .image {
+            flex: 1;
+            text-align: center;
+
+            img {
+                @include fullSize;
+            }
+        }
+    }
+}

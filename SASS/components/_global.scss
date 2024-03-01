@@ -6,6 +6,33 @@
     --color-two: #393E46;
     --color-three: #00ADB5;
     --color-four: #EEEEEE;
+    --para-color: #777;
+}
+
+.container {
+    @include responsive(large) {
+        min-width: 1140px;
+        padding: 0 40px;
+        margin: 0 auto;
+    }
+
+    @include responsive(medium) {
+        min-width: 940px;
+        padding: 0 40px;
+        margin: 0 auto;
+    }
+
+    @include responsive(small) {
+        min-width: 740px;
+        padding: 0 25px;
+        margin: 0 auto;
+    }
+
+    @include responsive(mobile) {
+        min-width: 200px;
+        padding: 0 20px;
+        margin: 0 auto;
+    }
 }
 
 * {

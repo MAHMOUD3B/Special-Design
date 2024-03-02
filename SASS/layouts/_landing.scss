@@ -11,7 +11,7 @@
     @include center;
 
     .overlay {
-        @include overlay(black, 0.5, 1)
+        @include overlay(black, 0.5, 1);
     }
 
     .land-text {

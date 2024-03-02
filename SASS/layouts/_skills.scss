@@ -28,7 +28,6 @@
         &:nth-child(1) {
             .progress {
                 span {
-                    width: 90%;
                     background-color: var(--color-one);
                 }
             }
@@ -37,7 +36,6 @@
         &:nth-child(2) {
             .progress {
                 span {
-                    width: 85%;
                     background-color: var(--color-three);
                 }
             }
@@ -46,7 +44,6 @@
         &:nth-child(3) {
             .progress {
                 span {
-                    width: 70%;
                     background-color: var(--color-two);
                 }
             }
@@ -73,6 +70,8 @@
                 top: 0;
                 left: 0;
                 height: 100%;
+                width: 0;
+                transition: all 1s ease;
             }
         }
     }

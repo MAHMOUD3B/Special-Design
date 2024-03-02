@@ -85,16 +85,60 @@ document.querySelectorAll(".backgrounds .buttons span").forEach((btns) => {
       option = true;
       randImgs();
       localStorage.setItem("btnStatus", true);
+      location.reload();
     } else {
       option = false;
       randImgs();
       clearInterval(stops);
       localStorage.setItem("background", landing.style.backgroundImage);
       localStorage.setItem("btnStatus", false);
+      location.reload();
     }
   });
 });
 landing.style.backgroundImage = localStorage.getItem("background");
-console.log(option);
 
-//
+// reach to skills section and doing animation
+window.onscroll = function () {
+  let skills = document.querySelector(".skills");
+  let skillsPosition = skills.offsetTop; // get postion of skills section
+  let skillsHeight = skills.offsetHeight; // get the height of skills section
+  let pagePosition = window.scrollY; // get the position of page
+  let pageHeight = window.innerHeight; // get the height of page
+  let condition = skillsPosition - pageHeight + skillsHeight - 50;
+  if (pagePosition > condition) {
+    let skillsLoop = document.querySelectorAll(".skills .progress span");
+    skillsLoop.forEach((span) => {
+      span.style.width = span.dataset.progress;
+      console.log("work");
+    });
+  } else {
+    let skillsLoop = document.querySelectorAll(".skills .progress span");
+    skillsLoop.forEach((span) => {
+      span.style.width = 0;
+      console.log("work");
+    });
+  }
+};
+
+// start gallary popup
+let images = document.querySelectorAll(".gallary .images img");
+images.forEach((img) => {
+  img.addEventListener("click", (ele) => {
+    // create overlay
+    let overlay = document.createElement("div");
+    overlay.className = "popOverlay";
+    document.body.appendChild(overlay);
+    // create popup
+    let popup = document.createElement("div");
+    popup.className = "popup";
+    document.body.appendChild(popup);
+    // create img
+    let image = document.createElement("img");
+    image.src = ele.target.currentSrc;
+    image.style.width = "100%";
+    // append the img to popup
+    popup.appendChild(image);
+    // hide the popup
+  });
+});

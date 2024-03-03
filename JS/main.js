@@ -110,13 +110,11 @@ window.onscroll = function () {
     let skillsLoop = document.querySelectorAll(".skills .progress span");
     skillsLoop.forEach((span) => {
       span.style.width = span.dataset.progress;
-      console.log("work");
     });
   } else {
     let skillsLoop = document.querySelectorAll(".skills .progress span");
     skillsLoop.forEach((span) => {
       span.style.width = 0;
-      console.log("work");
     });
   }
 };
@@ -136,9 +134,28 @@ images.forEach((img) => {
     // create img
     let image = document.createElement("img");
     image.src = ele.target.currentSrc;
-    image.style.width = "100%";
-    // append the img to popup
+    image.className = "image";
     popup.appendChild(image);
-    // hide the popup
+    // append title of image
+    if (img.alt !== null) {
+      let imageTitle = document.createElement("h3");
+      let TitleTxt = document.createTextNode(img.alt);
+      imageTitle.className = "imgTitle";
+      imageTitle.appendChild(TitleTxt);
+      popup.prepend(imageTitle);
+      console.log(img.alt);
+    }
+    // create close button
+    let close = document.createElement("span");
+    let closeTxt = document.createTextNode("X");
+    close.className = "close";
+    close.appendChild(closeTxt);
+    popup.append(close);
+  });
+  document.addEventListener("click", (ele) => {
+    if (ele.target.className === "close") {
+      document.querySelector(".popOverlay").remove();
+      document.querySelector(".popup").remove();
+    }
   });
 });

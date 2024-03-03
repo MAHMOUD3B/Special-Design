@@ -1,0 +1,107 @@
+@use "../helpers/mixins" as *;
+
+/* Styling timeline section */
+.timeline {
+    @include secPadding;
+    background-color: #eee;
+
+    .timeline-content {
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: calc(50% - 1px);
+            top: 0px;
+            width: 2px;
+            height: 100%;
+            background-color: var(--color-one);
+            margin-left: 0;
+            z-index: 1;
+        }
+
+        .year {
+            background-color: var(--color-one);
+            margin: 20px auto;
+            padding: 2px 5px;
+            width: 50px;
+            @include font(16px, bold, white);
+            border-radius: 5px;
+            z-index: 2;
+            position: relative;
+            text-align: center;
+        }
+
+        .left,
+        .right {
+            width: calc(50% - 25px);
+            margin-bottom: 40px;
+            position: relative;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid var(--color-one);
+
+            h3 {
+                @include font(20px, bold, var(--color-one));
+                margin-bottom: 10px;
+            }
+
+            p {
+                @include paragraph;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                @include circle(24px, white);
+                border: 3px solid var(--color-one);
+                z-index: 2;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                border-width: 10px;
+                border-color: transparent;
+                border-style: solid;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+        }
+
+        .left {
+            float: left;
+
+            &::before {
+                right: -40px;
+            }
+
+            &::after {
+                border-left-color: var(--color-one);
+                right: -20px;
+            }
+        }
+
+        .right {
+            float: right;
+
+            &::before {
+                left: -40px;
+            }
+
+            &::after {
+                border-right-color: var(--color-one);
+                left: -20px;
+            }
+        }
+
+        .clearfix {
+            clear: both;
+        }
+    }
+}

@@ -65,3 +65,24 @@
     width: 100%;
     height: 100%;
 }
+
+@mixin centerX {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin centerY {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin font($size, $weight, $color) {
+    font: {
+        size: $size;
+        weight: $weight;
+    }
+
+    color: $color;
+}

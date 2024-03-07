@@ -29,38 +29,26 @@ gear.addEventListener("click", () => {
   icon.classList.toggle("fa-spin");
 });
 
-// change colors from setting box
+// change colors setting
 let colorOptions = document.querySelectorAll(".colors ul li");
 colorOptions.forEach((opt) => {
-  // check the active icon
   if (opt.dataset.color === localStorage.getItem("colorOne")) {
     opt.classList.add("active");
   }
-
-  // change the value of root colors
   opt.addEventListener("click", (ele) => {
     let currentColor = ele.target.dataset.color;
     let secondColor = ele.target.dataset.altClr;
     document.documentElement.style.cssText = `--color-one: ${currentColor}; --color-three: ${secondColor}`;
-
-    // Save changes in the local storage
     localStorage.setItem("colorOne", currentColor);
     localStorage.setItem("colorTwo", secondColor);
-
-    // remove all classes active from elements and put it on targeted element
-    ele.target.parentElement.querySelectorAll(".active").forEach((e) => {
-      e.classList.remove("active");
-    });
-    ele.target.classList.add("active");
+    handelActive(ele);
   });
 });
-
-// get the colors from local storage.
 document.documentElement.style.cssText = `--color-one: ${localStorage.getItem(
   "colorOne"
 )}; --color-three: ${localStorage.getItem("colorTwo")}`;
 
-// choose random background behavior
+// change background setting
 document.querySelectorAll(".backgrounds .buttons span").forEach((btns) => {
   if (storage !== null) {
     if (storage === "true") {
@@ -77,10 +65,7 @@ document.querySelectorAll(".backgrounds .buttons span").forEach((btns) => {
     }
   }
   btns.addEventListener("click", (btn) => {
-    btn.target.parentElement.querySelectorAll(".active").forEach((span) => {
-      span.classList.remove("active");
-    });
-    btn.target.classList.add("active");
+    handelActive(btn);
     if (btn.target.dataset.background === "yes") {
       option = true;
       randImgs();
@@ -98,7 +83,34 @@ document.querySelectorAll(".backgrounds .buttons span").forEach((btns) => {
 });
 landing.style.backgroundImage = localStorage.getItem("background");
 
-// reach to skills section and doing animation
+// change bullets settings
+let bulletsSetting = document.querySelectorAll(".bullets-setting span");
+let bulletsContainer = document.querySelector(".bullets");
+bulletsSetting.forEach((btns) => {
+  btns.addEventListener("click", (ele) => {
+    if (ele.target.dataset.bullet === "show") {
+      bulletsContainer.style.display = "flex";
+      localStorage.setItem("bulletsStatus", "flex");
+    } else {
+      bulletsContainer.style.display = "none";
+      localStorage.setItem("bulletsStatus", "none");
+    }
+    handelActive(ele);
+    localStorage.setItem("bulletsBtns", ele.target.dataset.bullet);
+  });
+  if (localStorage.getItem("bulletsBtns") === "show") {
+    if (btns.dataset.bullet === "show") {
+      btns.classList.add("active");
+    }
+  } else {
+    if (btns.dataset.bullet === "hide") {
+      btns.classList.add("active");
+    }
+  }
+  bulletsContainer.style.display = localStorage.getItem("bulletsStatus");
+});
+
+// skills animation
 window.onscroll = function () {
   let skills = document.querySelector(".skills");
   let skillsPosition = skills.offsetTop; // get postion of skills section
@@ -119,7 +131,7 @@ window.onscroll = function () {
   }
 };
 
-// start gallary popup
+// gallary popup
 let images = document.querySelectorAll(".gallary .images img");
 images.forEach((img) => {
   img.addEventListener("click", (ele) => {
@@ -159,3 +171,30 @@ images.forEach((img) => {
     }
   });
 });
+
+// side bullets
+const bullets = document.querySelectorAll(".bullets .bullet");
+bullets.forEach((bull) => {
+  bull.addEventListener("click", (ele) => {
+    document.querySelector(ele.target.dataset.section).scrollIntoView({
+      behavior: "smooth",
+    });
+  });
+});
+
+// toggle menu
+let btn = document.querySelector(".btn-toggle");
+btn.addEventListener("click", () => {
+  document.querySelector(".navigation").classList.toggle("menu");
+  document.querySelectorAll(".btn-toggle span").forEach((span) => {
+    span.classList.toggle("opened");
+  });
+});
+
+// functions
+function handelActive(event) {
+  event.target.parentElement.querySelectorAll(".active").forEach((e) => {
+    e.classList.remove("active");
+  });
+  event.target.classList.add("active");
+}

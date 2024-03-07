@@ -1,0 +1,59 @@
+@use"../helpers/mixins" as *;
+
+/* Styling bullets */
+.bullets {
+    width: 50px;
+    height: 200px;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    z-index: 100;
+
+    .bullet {
+
+        @include circle(15px, transparent);
+        border: 2px solid var(--color-one);
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+            .tooltip {
+                display: block;
+            }
+        }
+
+        .tooltip {
+            width: 120px;
+            position: absolute;
+            padding: 5px 10px;
+            background-color: var(--color-one);
+            right: 28px;
+            top: -5px;
+            border: 1px solid var(--color-three);
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+            @include font(14px, bold, var(--color-three));
+            cursor: auto;
+
+            &::before {
+                content: "";
+                position: absolute;
+                border-width: 8px;
+                border-color: transparent;
+                border-left-color: var(--color-three);
+                border-style: solid;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1;
+                right: -16px;
+            }
+        }
+    }
+}

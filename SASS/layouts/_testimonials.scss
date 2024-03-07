@@ -1,0 +1,83 @@
+@use"../helpers/mixins" as *;
+
+/* Styling testimonials section */
+.testimonials {
+    @include secPadding;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        background-color: var(--color-one);
+        left: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        background-color: #444;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    h3 {
+        @include secTitle;
+        color: var(--color-three) !important;
+        margin-bottom: 40px;
+    }
+
+    .testmonials-content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+
+        .testimon {
+            min-width: 300px;
+            flex: 1;
+
+            @include responsive(small) {
+                min-width: 250px;
+                flex: 1;
+            }
+
+            @include responsive(mobile) {
+                min-width: 250px;
+                flex: 1;
+            }
+
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+
+            p {
+                @include paragraph;
+                margin-bottom: 10px;
+            }
+
+            .per-info {
+                display: flex;
+                align-items: center;
+
+                img {
+                    @include circle(80px, transparent);
+                    margin-right: 20px;
+                }
+
+                .text {
+                    h4 {
+                        color: var(--color-one);
+                    }
+                }
+            }
+        }
+    }
+
+}

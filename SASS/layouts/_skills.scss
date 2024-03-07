@@ -6,13 +6,7 @@
     background-color: #ddd;
 
     h3 {
-        font: {
-            size: 30px;
-            weight: bold;
-        }
-
-        color: var(--color-one);
-        text-align: center;
+        @include secTitle;
         margin-bottom: 50px;
     }
 

@@ -1,0 +1,80 @@
+@use"../helpers/mixins" as *;
+
+/* Styling featrues section */
+.features {
+    @include secPadding;
+
+    h3 {
+        @include secTitle;
+        margin-bottom: 40px;
+    }
+
+    .content {
+        @include responsive(xx-large) {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        @include responsive(x-large) {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        @include responsive(large) {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        @include responsive(medium) {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        @include responsive(small) {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        @include responsive(mobile) {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .feat {
+            text-align: center;
+
+            img {
+                width: 30%;
+                border-radius: 50%;
+                margin-bottom: 15px;
+            }
+
+            h4 {
+                margin-bottom: 20px;
+                @include font(20px, bold, var(--color-one));
+                position: relative;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: -10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 50px;
+                    height: 3px;
+                    background-color: var(--color-one);
+                }
+            }
+
+            p {
+                @include paragraph;
+                width: 80%;
+                margin: auto;
+            }
+        }
+    }
+}

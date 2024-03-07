@@ -2,7 +2,7 @@
 
 /* Start global rules of styling */
 :root {
-    --color-one: #222831;
+    --color-one: ax;
     --color-two: #393E46;
     --color-three: #00ADB5;
     --color-four: #EEEEEE;
@@ -10,26 +10,38 @@
 }
 
 .container {
+    @include responsive(xx-large) {
+        max-width: 1550px;
+        padding: 0 100px;
+        margin: 0 auto;
+    }
+
+    @include responsive(x-large) {
+        max-width: 1300px;
+        padding: 0 80px;
+        margin: 0 auto;
+    }
+
     @include responsive(large) {
-        min-width: 1140px;
-        padding: 0 40px;
+        max-width: 1100px;
+        padding: 0 60px;
         margin: 0 auto;
     }
 
     @include responsive(medium) {
-        min-width: 940px;
+        max-width: 950px;
         padding: 0 40px;
         margin: 0 auto;
     }
 
     @include responsive(small) {
-        min-width: 740px;
-        padding: 0 25px;
+        max-width: 720px;
+        padding: 0 30px;
         margin: 0 auto;
     }
 
     @include responsive(mobile) {
-        min-width: 200px;
+        max-width: 520px;
         padding: 0 20px;
         margin: 0 auto;
     }
@@ -42,8 +54,13 @@
     transition: 0.5s;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Open Sans", sans-serif;
+    text-transform: capitalize;
 }
 
 ul {
@@ -65,4 +82,3 @@ a {
 input {
     caret-color: var(--color-one);
 }
-

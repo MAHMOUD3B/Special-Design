@@ -1,3 +1,5 @@
+@use"../helpers/mixins" as *;
+
 /* Start Styling header */
 header {
     height: 60px;
@@ -7,7 +9,7 @@ header {
     justify-content: space-between;
     position: absolute;
     width: 100%;
-    z-index: 2;
+    z-index: 100;
 
     .logo {
         display: inline-block;
@@ -23,32 +25,284 @@ header {
         }
     }
 
-    nav {
-        height: 100%;
-        border-radius: 10px;
+    .btn-toggle {
+        border: none;
+        width: 25px;
+        height: 25px;
+        background-color: transparent;
+        display: none;
+        cursor: pointer;
 
-        &:hover {
-            box-shadow: 5px 10px 30px 0 rgba(0, 0, 0, 0.3);
-            background-color: rgba(255, 255, 255, 0.4);
+        &:focus {
+            outline: none;
         }
 
-        ul {
-            display: flex;
+        .opened {
+            background-color: var(--color-three);
+        }
+
+        span {
+            display: block;
+            height: 3px;
+            margin-bottom: 5px;
+            background-color: var(--color-one);
+            border-radius: 3px;
+        }
+
+        @include responsive(medium) {
+            display: block;
+        }
+
+        @include responsive(small) {
+            display: block;
+        }
+
+        @include responsive(mobile) {
+            display: block;
+        }
+    }
+
+    @include responsive(mobile) {
+        .navigation {
+            display: none;
+        }
+
+        .menu {
+            display: block;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            padding: 25px;
+            width: 100%;
+            height: 60vh;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 0;
+            z-index: 3;
+
+            &:hover {
+                background-color: white;
+            }
+
+
+            ul {
+                flex-direction: column;
+                align-items: center;
+
+                li {
+                    .active {
+                        @include font(18px, bold, var(--color-three));
+                    }
+
+                    a {
+                        display: block;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+
+                        &:not(:last-of-type) {
+                            border-bottom: 1px solid var(--color-three);
+                        }
+
+                        @include font(18px, normal, var(--color-one));
+
+                        &:hover {
+                            @include font(18px, bold, var(--color-three));
+                            background-color: #eee;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(small) {
+        .navigation {
+            display: none;
+        }
+
+        .menu {
+            display: block;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            padding: 30px;
+            width: 100%;
+            height: 60vh;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 0;
+            z-index: 3;
+
+            &:hover {
+                background-color: white;
+            }
+
+
+            ul {
+                flex-direction: column;
+                align-items: center;
+
+                li {
+                    .active {
+                        @include font(18px, bold, var(--color-three));
+                    }
+
+                    a {
+                        display: block;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+
+                        &:not(:last-of-type) {
+                            border-bottom: 1px solid var(--color-three);
+                        }
+
+                        @include font(18px, normal, var(--color-one));
+
+                        &:hover {
+                            @include font(18px, bold, var(--color-three));
+                            background-color: #eee;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(medium) {
+        .navigation {
+            display: none;
+        }
+
+        .menu {
+            display: block;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            padding: 30px;
+            width: 100%;
+            height: 60vh;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 0;
+            z-index: 3;
+
+            &:hover {
+                background-color: white;
+            }
+
+            ul {
+                flex-direction: column;
+                align-items: center;
+
+                li {
+                    .active {
+                        @include font(18px, bold, var(--color-three));
+                    }
+
+                    a {
+                        display: block;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+
+                        &:not(:last-of-type) {
+                            border-bottom: 1px solid var(--color-three);
+                        }
+
+                        @include font(18px, normal, var(--color-one));
+
+                        &:hover {
+                            @include font(18px, bold, var(--color-three));
+                            background-color: #eee;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(large) {
+        nav {
             height: 100%;
+            border-radius: 10px;
+            display: block;
 
-            li {
-                a {
-                    padding: 10px 20px;
-                    color: var(--color-one);
-                    font-size: 18px;
-                    display: inline-block;
+            &:hover {
+                box-shadow: 5px 10px 30px 0 rgba(0, 0, 0, 0.3);
+                background-color: rgba(255, 255, 255, 0.4);
+            }
 
-                    &.active,
-                    &:hover {
-                        color: var(--color-three);
+            ul {
+                display: flex;
+                height: 100%;
 
-                        font: {
-                            weight: bold;
+                li {
+                    a {
+                        padding: 10px 20px;
+                        @include font(18px, normal, var(--color-one));
+                        display: inline-block;
+
+                        &.active,
+                        &:hover {
+                            @include font(18px, bold, var(--color-three));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(x-large) {
+        nav {
+            height: 100%;
+            border-radius: 10px;
+            display: block;
+
+            &:hover {
+                box-shadow: 5px 10px 30px 0 rgba(0, 0, 0, 0.3);
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+
+            ul {
+                display: flex;
+                height: 100%;
+
+                li {
+                    a {
+                        padding: 10px 20px;
+                        @include font(18px, normal, var(--color-one));
+                        display: inline-block;
+
+                        &.active,
+                        &:hover {
+                            @include font(18px, bold, var(--color-three));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include responsive(xx-large) {
+        nav {
+            height: 100%;
+            border-radius: 10px;
+            display: block;
+
+            &:hover {
+                box-shadow: 5px 10px 30px 0 rgba(0, 0, 0, 0.3);
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+
+            ul {
+                display: flex;
+                height: 100%;
+
+                li {
+                    a {
+                        padding: 10px 20px;
+                        @include font(18px, normal, var(--color-one));
+                        display: inline-block;
+
+                        &.active,
+                        &:hover {
+                            @include font(18px, bold, var(--color-three));
                         }
                     }
                 }

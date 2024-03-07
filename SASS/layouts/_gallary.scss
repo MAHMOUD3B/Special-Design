@@ -5,14 +5,8 @@
     @include secPadding;
 
     h3 {
-        font: {
-            size: 30px;
-            weight: bold;
-        }
-
-        color: var(--color-one);
+        @include secTitle;
         margin-bottom: 50px;
-        text-align: center;
     }
 
     .images {

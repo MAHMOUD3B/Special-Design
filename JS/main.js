@@ -4,12 +4,12 @@ let stops;
 let storage = localStorage.getItem("btnStatus");
 let landing = document.querySelector(".landing");
 let backgrounds = [
-  "../images/one.jfif",
-  "../images/two.jpg",
-  "../images/three.jpg",
-  "../images/four.jpg",
-  "../images/five.jpg",
-  "../images/six.jfif",
+  "./images/one.jfif",
+  "./images/two.jpg",
+  "./images/three.jpg",
+  "./images/four.jpg",
+  "./images/five.jpg",
+  "./images/six.jfif",
 ];
 function randImgs() {
   if (option === true) {
@@ -117,14 +117,16 @@ navbarSetting.forEach((btns) => {
   btns.addEventListener("click", (ele) => {
     if (ele.target.dataset.position === "top") {
       navbar.style.position = "absolute";
+      navbar.classList.remove("sticky");
       localStorage.setItem("position", "absolute");
+      localStorage.setItem("navbarBtns", ele.target.dataset.position);
     } else {
       navbar.style.position = "fixed";
-      navbar.classList.toggle("sticky");
+      navbar.classList.add("sticky");
       localStorage.setItem("position", "fixed");
+      localStorage.setItem("navbarBtns", ele.target.dataset.position);
     }
     handelActive(ele);
-    localStorage.setItem("navbarBtns", ele.target.dataset.position);
   });
   if (localStorage.getItem("navbarBtns") === "top") {
     if (btns.dataset.position === "top") {

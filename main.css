@@ -1,9 +1,9 @@
 /* Start global rules of styling */
 :root {
-  --color-one: ax;
-  --color-two: #393E46;
-  --color-three: #00ADB5;
-  --color-four: #EEEEEE;
+  --color-one: #FF9843;
+  --color-two: #FFDD95;
+  --color-three: #000000;
+  --color-four: #3468C0;
   --para-color: #777;
 }
 
@@ -188,16 +188,16 @@ input {
   opacity: 1;
 }
 .setting-box .setting-container .colors ul li:nth-child(1) {
-  background-color: #222831;
+  background-color: #FF9843;
 }
 .setting-box .setting-container .colors ul li:nth-child(2) {
-  background-color: #393E46;
+  background-color: #FFDD95;
 }
 .setting-box .setting-container .colors ul li:nth-child(3) {
-  background-color: #00ADB5;
+  background-color: #000000;
 }
 .setting-box .setting-container .colors ul li:nth-child(4) {
-  background-color: #EEEEEE;
+  background-color: #3468C0;
 }
 .setting-box .setting-container .backgrounds {
   padding: 10px;
@@ -759,18 +759,22 @@ header .btn-toggle span {
 }
 .landing .land-text h1 {
   font-size: 40px;
-  color: var(--color-four);
+  font-weight: normal;
+  color: white;
 }
 .landing .land-text h1 span {
+  font-size: 42px;
+  font-weight: bold;
   color: var(--color-one);
 }
 .landing .land-text h1 span:hover {
   color: var(--color-three);
 }
 .landing .land-text p {
-  color: var(--color-four);
-  line-height: 1.8;
   font-size: 20px;
+  font-weight: normal;
+  color: white;
+  line-height: 1.8;
 }
 
 /* Styling about section */

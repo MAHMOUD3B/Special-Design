@@ -32,11 +32,10 @@
         z-index: 2;
 
         h1 {
-            font-size: 40px;
-            color: var(--color-four);
+            @include font(40px, normal, white);
 
             span {
-                color: var(--color-one);
+                @include font(42px, bold, var(--color-one));
 
                 &:hover {
                     color: var(--color-three);
@@ -45,9 +44,8 @@
         }
 
         p {
-            color: var(--color-four);
+            @include font(20px, normal, white);
             line-height: 1.8;
-            font-size: 20px;
         }
     }
 }

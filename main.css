@@ -269,6 +269,41 @@ input {
   background-color: var(--color-one);
   color: var(--color-three);
 }
+.setting-box .setting-container .navbar {
+  padding: 10px;
+  background-color: #ccc;
+  text-align: center;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.setting-box .setting-container .navbar:hover {
+  -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+          box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+.setting-box .setting-container .navbar h3 {
+  margin-bottom: 10px;
+  color: var(--color-one);
+  font-size: 18px;
+}
+.setting-box .setting-container .navbar .buttons span {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: gray;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.setting-box .setting-container .navbar .buttons span:nth-child(1) {
+  margin-right: 15px;
+}
+.setting-box .setting-container .navbar .buttons span.active {
+  background-color: var(--color-one);
+  color: var(--color-three);
+}
 
 .open {
   left: 0;
@@ -354,8 +389,11 @@ header {
       -ms-flex-pack: justify;
           justify-content: space-between;
   position: absolute;
+  z-index: 5;
   width: 100%;
-  z-index: 100;
+}
+header.sticky {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 header .logo {
   display: inline-block;
@@ -373,6 +411,17 @@ header .btn-toggle {
   background-color: transparent;
   display: none;
   cursor: pointer;
+  position: relative;
+}
+header .btn-toggle.arrow::before {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  right: 3.5px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: white;
 }
 header .btn-toggle:focus {
   outline: none;
@@ -408,15 +457,18 @@ header .btn-toggle span {
   }
   header .menu {
     display: block;
-    position: absolute;
+    position: absolute !important;
     top: 50px;
     left: 0;
-    padding: 25px;
-    width: 100%;
+    padding: 20px;
+    width: 90%;
     height: 60vh;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 0;
-    z-index: 3;
+    background-color: white;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    border-radius: 8px;
   }
   header .menu:hover {
     background-color: white;
@@ -429,6 +481,8 @@ header .btn-toggle span {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    border: 1px solid var(--color-one);
+    border-radius: 5px;
   }
   header .menu ul li .active {
     font-size: 18px;
@@ -437,7 +491,7 @@ header .btn-toggle span {
   }
   header .menu ul li a {
     display: block;
-    padding: 10px 20px;
+    padding: 10px;
     border-radius: 5px;
     font-size: 18px;
     font-weight: normal;
@@ -459,15 +513,18 @@ header .btn-toggle span {
   }
   header .menu {
     display: block;
-    position: absolute;
+    position: absolute !important;
+    border-radius: 8px;
     top: 50px;
     left: 0;
     padding: 30px;
-    width: 100%;
+    width: 90%;
     height: 60vh;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 0;
-    z-index: 3;
+    background-color: white;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
   }
   header .menu:hover {
     background-color: white;
@@ -480,6 +537,8 @@ header .btn-toggle span {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    border: 1px solid var(--color-one);
+    border-radius: 5px;
   }
   header .menu ul li .active {
     font-size: 18px;
@@ -510,15 +569,18 @@ header .btn-toggle span {
   }
   header .menu {
     display: block;
-    position: absolute;
+    position: absolute !important;
     top: 50px;
     left: 0;
     padding: 30px;
-    width: 100%;
+    width: 90%;
     height: 60vh;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 0;
-    z-index: 3;
+    background-color: white;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    border-radius: 8px;
   }
   header .menu:hover {
     background-color: white;
@@ -531,6 +593,8 @@ header .btn-toggle span {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    border: 1px solid var(--color-one);
+    border-radius: 5px;
   }
   header .menu ul li .active {
     font-size: 18px;
@@ -721,16 +785,42 @@ header .btn-toggle span {
       -ms-flex-align: center;
           align-items: center;
 }
+@media (max-width: 575px) {
+  .about .content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .about .content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
 .about .content .info {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
+@media (max-width: 575px) {
+  .about .content .info {
+    text-align: center;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .about .content .info {
+    text-align: center;
+  }
+}
 .about .content .info h3 {
-  color: var(--color-one);
-  margin-bottom: 10px;
   font-size: 30px;
   font-weight: bold;
+  color: var(--color-one);
+  margin-bottom: 10px;
 }
 .about .content .info p {
   font-size: 14px;
@@ -764,14 +854,24 @@ header .btn-toggle span {
 }
 .skills .skill {
   margin-bottom: 30px;
-  height: 50px;
+  height: 100%;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   background-color: white;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
+}
+@media (max-width: 575px) {
+  .skills .skill {
+    display: block;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .skills .skill {
+    display: block;
+  }
 }
 .skills .skill:nth-child(1) .progress span {
   background-color: var(--color-one);
@@ -788,6 +888,18 @@ header .btn-toggle span {
   text-align: center;
   font-size: 20px;
   font-weight: bold;
+}
+@media (max-width: 575px) {
+  .skills .skill p {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .skills .skill p {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
 .skills .skill .progress {
   height: 30px;
@@ -866,6 +978,12 @@ header .btn-toggle span {
   padding: 10px;
   border: 3px solid var(--color-one);
 }
+@media (max-width: 575px) {
+  .popup {
+    width: 250px;
+    height: 250px;
+  }
+}
 
 .image {
   width: 100%;
@@ -938,6 +1056,11 @@ header .btn-toggle span {
   position: relative;
   text-align: center;
 }
+@media (max-width: 575px) {
+  .timeline .timeline-content .year {
+    margin-bottom: 40px;
+  }
+}
 .timeline .timeline-content .left,
 .timeline .timeline-content .right {
   width: calc(50% - 25px);
@@ -947,6 +1070,14 @@ header .btn-toggle span {
   padding: 20px;
   border-radius: 5px;
   border: 1px solid var(--color-one);
+}
+@media (max-width: 575px) {
+  .timeline .timeline-content .left,
+  .timeline .timeline-content .right {
+    width: 100%;
+    z-index: 2;
+    text-align: center;
+  }
 }
 .timeline .timeline-content .left h3,
 .timeline .timeline-content .right h3 {
@@ -994,6 +1125,18 @@ header .btn-toggle span {
 .timeline .timeline-content .left::before {
   right: -40px;
 }
+@media (max-width: 575px) {
+  .timeline .timeline-content .left::before {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    top: -14px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+}
 .timeline .timeline-content .left::after {
   border-left-color: var(--color-one);
   right: -20px;
@@ -1003,6 +1146,18 @@ header .btn-toggle span {
 }
 .timeline .timeline-content .right::before {
   left: -40px;
+}
+@media (max-width: 575px) {
+  .timeline .timeline-content .right::before {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    top: -14px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
 }
 .timeline .timeline-content .right::after {
   border-right-color: var(--color-one);
@@ -1350,4 +1505,21 @@ header .btn-toggle span {
   padding: 10px;
   caret-color: var(--color-one);
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Styling footer */
+footer {
+  padding: 30px;
+  background-color: #333;
+  text-align: center;
+}
+footer p {
+  font-size: 20px;
+  font-weight: normal;
+  color: white;
+}
+footer p span {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--color-one);
 }

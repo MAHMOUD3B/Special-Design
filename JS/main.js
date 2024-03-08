@@ -110,6 +110,35 @@ bulletsSetting.forEach((btns) => {
   bulletsContainer.style.display = localStorage.getItem("bulletsStatus");
 });
 
+// change navbar settings
+let navbarSetting = document.querySelectorAll(".navbar span");
+let navbar = document.querySelector("header");
+navbarSetting.forEach((btns) => {
+  btns.addEventListener("click", (ele) => {
+    if (ele.target.dataset.position === "top") {
+      navbar.style.position = "absolute";
+      localStorage.setItem("position", "absolute");
+    } else {
+      navbar.style.position = "fixed";
+      navbar.classList.toggle("sticky");
+      localStorage.setItem("position", "fixed");
+    }
+    handelActive(ele);
+    localStorage.setItem("navbarBtns", ele.target.dataset.position);
+  });
+  if (localStorage.getItem("navbarBtns") === "top") {
+    if (btns.dataset.position === "top") {
+      btns.classList.add("active");
+    }
+  } else {
+    if (btns.dataset.position === "sticky") {
+      btns.classList.add("active");
+      navbar.classList.add("sticky");
+    }
+  }
+  navbar.style.position = localStorage.getItem("position");
+});
+
 // skills animation
 window.onscroll = function () {
   let skills = document.querySelector(".skills");
@@ -184,11 +213,26 @@ bullets.forEach((bull) => {
 
 // toggle menu
 let btn = document.querySelector(".btn-toggle");
-btn.addEventListener("click", () => {
-  document.querySelector(".navigation").classList.toggle("menu");
+let nav = document.querySelector(".navigation");
+btn.addEventListener("click", (ele) => {
+  btn.classList.toggle("arrow");
+  nav.classList.toggle("menu");
+  ele.stopPropagation();
   document.querySelectorAll(".btn-toggle span").forEach((span) => {
     span.classList.toggle("opened");
   });
+});
+nav.addEventListener("click", (ele) => {
+  ele.stopPropagation();
+});
+document.addEventListener("click", (ele) => {
+  if (ele.target !== btn && ele.target !== nav) {
+    btn.classList.remove("arrow");
+    nav.classList.remove("menu");
+    document.querySelectorAll(".btn-toggle span").forEach((span) => {
+      span.classList.remove("opened");
+    });
+  }
 });
 
 // functions
